@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author zhanglifang
  * @date 2020/5/20
  */
-@FeignClient("service-hi")//使用feign远程调用service-hi服务
+@FeignClient(value = "service-hi", fallback = ServiceHiHystrix.class)//使用feign远程调用service-hi服务
 public interface ServiceHi {
 
     @GetMapping("/hi")
