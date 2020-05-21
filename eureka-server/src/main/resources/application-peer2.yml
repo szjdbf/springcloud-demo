@@ -1,0 +1,21 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: peer2
+
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    #    #表示自身是eureka-server
+    #    register-with-eureka: false
+    #    fetch-registry: false
+    #eureka的服务注册地址
+    service-url:
+      default-zone: http://localhost:8760/eureka/
+    register-with-eureka: true #注册中心相互注册
+    fetch-registry: true
+#      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
