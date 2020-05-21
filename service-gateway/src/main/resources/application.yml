@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #gateway开启服务注册和发现
+          lower-case-service-id: true #将请求路径上的服务名配置为小写
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://peer1:8760/eureka/
