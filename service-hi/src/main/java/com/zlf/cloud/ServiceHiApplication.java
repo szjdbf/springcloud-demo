@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+
 /**
  * @author zhanglifang
  * @date 2020/5/20
@@ -40,11 +42,15 @@ public class ServiceHiApplication {
     @GetMapping("/hi")
     @HystrixCommand(fallbackMethod = "hiError")
     public String home(@RequestParam(defaultValue = "visitor") String name) {
-//        int i = 1 / 0;
+        Random random = new Random();
+        //模拟异常
+        if (3 == random.nextInt(5)) {
+            throw new RuntimeException();
+        }
         return "hi " + name + ", i am from port : " + port;
     }
 
-
+    //当home方法出现异常时会调用该方法返回结果
     public String hiError(String name) {
         return "hi," + name + ",sorry,error!";
     }

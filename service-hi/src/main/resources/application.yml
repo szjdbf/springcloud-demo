@@ -10,7 +10,7 @@ spring:
 eureka:
   client:
     service-url:
-      default-zone: http://peer1:8760/eureka/
+      defaultZone: http://root:123456@peer1:8760/eureka/,http://root:123456@peer2:8761/eureka/
 management:
   endpoints:
     web:
