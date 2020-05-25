@@ -8,7 +8,7 @@ spring:
 
 eureka:
   server:
-    enable-self-preservation: true
+    enable-self-preservation: false #关闭自我保护机制
   instance:
     prefer-ip-address: true
 

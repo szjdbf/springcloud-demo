@@ -47,7 +47,7 @@ public class ServiceHiApplication {
             throw new RuntimeException();
         }
         log.info("正常");
-        return "hi " + name + ", i am from port : " + port;
+        return "hi " + name + ", I am from port : " + port;
     }
 
     //当home方法出现异常时会调用该方法返回结果
