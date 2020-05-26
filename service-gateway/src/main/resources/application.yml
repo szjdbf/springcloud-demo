@@ -19,11 +19,20 @@ spring:
           uri: http://localhost:8762/
           predicates:
             - Cookie=username,zlf #只有带cookie的才能匹配到这个路由
-          filters: #当路由出错时会转发到服务降级的控制器上
-            - name: Hystrix
+          filters:
+            - name: Hystrix #断路器 服务降级
               args:
                 name: fallbackcmd
                 fallbackUri: forward:/fallback
+            - name: RequestRateLimiter #限流
+              args:
+                redis-rate-limiter.replenishRate: 1 #每秒允许处理的请求数量
+                redis-rate-limiter.burstCapacity: 2 #每秒最大处理的请求数量
+                key-resolver: "#{@ipKeyResolver}"
+  redis:
+    host: 106.12.91.187
+    password: zlf1997!
+
 
 eureka:
   client:
