@@ -10,6 +10,20 @@ spring:
         locator:
           enabled: true #gateway开启服务注册和发现
           lower-case-service-id: true #将请求路径上的服务名配置为小写
+      routes:
+        - id: get_route
+          uri: http://httpbin.org/
+          predicates:
+            - Path=/get
+        - id: cookie_route
+          uri: http://localhost:8762/
+          predicates:
+            - Cookie=username,zlf #只有带cookie的才能匹配到这个路由
+          filters: #当路由出错时会转发到服务降级的控制器上
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/fallback
 
 eureka:
   client:
