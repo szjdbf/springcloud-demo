@@ -5,11 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
-import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +23,6 @@ import java.util.Random;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableHystrix//开启断路器
-@EnableHystrixDashboard
-@EnableCircuitBreaker
 @Slf4j
 public class ServiceHiApplication {
 
@@ -43,7 +39,7 @@ public class ServiceHiApplication {
         Random random = new Random();
         //模拟异常
         if (3 == random.nextInt(5)) {
-            log.error(this.getClass().getName() + " --> 出现异常");
+            log.error("出现异常");
             throw new RuntimeException();
         }
         log.info("正常");

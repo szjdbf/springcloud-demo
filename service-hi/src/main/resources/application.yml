@@ -9,20 +9,15 @@ eureka:
   client:
     service-url:
       defaultZone: http://root:123456@peer1:8760/eureka/,http://root:123456@peer2:8761/eureka/
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
 
 #日志
 logging:
   #logging.file和logging.path同时配置时，只会生效一个file
   #  file: hi.log,
   level:
-    com.zlf.cloud: error
-  pattern:
-    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
-    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+    com.zlf.cloud: info
+#  pattern:
+#    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+#    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
   file:
-    path: ${spring.application.name}/log
+    path: D:/${spring.application.name}/log
