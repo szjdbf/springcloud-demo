@@ -12,4 +12,4 @@ eureka:
 
 feign:
   hystrix:
-    enabled: true #开启feign的断路器
+    enabled: true #默认是关闭的，需要手动开启开启feign的断路器

@@ -8,7 +8,7 @@ spring:
 eureka:
   client:
     service-url:
-      default-zone: http://localhost:8761/eureka/
+      defaultZone: http://root:123456@localhost:8761/eureka/
 
 zuul:
   routes:
@@ -18,3 +18,7 @@ zuul:
     api-feign:  #以api-feign开头的请求转发给service-feign
       path: /api-feign/**
       service-id: service-feign
+
+ribbon: #zuul的路由转发是通过ribbon转发的，使用okhttp
+  okhttp:
+    enabled: true
