@@ -18,6 +18,14 @@ import java.util.Objects;
 public class RedisRateLimiterConfig {
 
     /**
+     * 通过请求参数username限流
+     */
+//    @Bean("userKeyResolver")
+//    public KeyResolver userKeyResolver() {
+//        return exchange -> Mono.just(Objects.requireNonNull(exchange.getRequest().getQueryParams().getFirst("username")));
+//    }
+
+    /**
      * 使用redis通过ip限流
      */
     @Bean
