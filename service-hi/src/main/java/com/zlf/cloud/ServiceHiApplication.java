@@ -51,4 +51,11 @@ public class ServiceHiApplication {
         return "hi," + name + ",sorry,error!";
     }
 
+    @GetMapping("/shutdown")
+    public String shutdown() {
+        System.exit(1);
+        return "OK";
+    }
+
+
 }
